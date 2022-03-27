@@ -18,18 +18,18 @@ Press "C" to clear all statistics.
 
 The program throws away values below 20, and above 1000.
 
---
+---
 
-Here is how Martin H. Goodman described how the device worked in the July 1987 issue of The Rainbow, p78:
+Here is how Martin H. Goodman described the device worked in the July 1987 issue of The Rainbow, p.78:
 
-```The Interface consists of a quad op amp and an RC ramp generator circuit. Using a trigger signal from the cassette output line, it starts the ramp generator, and then timing loops in assembly language software are used to measure the exact amount of time it takes for the voltage in the RC circuit to rise to the level of the wiper of the pots in the joystick. By measuring this time very precisely, the joystick position can be read to 10 times the precision measured with the ordinary (6-bit DAC) joystick
-port.```
+> The Interface consists of a quad op amp and an RC ramp generator circuit. Using a trigger signal from the cassette output line, it starts the ramp generator, and then timing loops in assembly language software are used to measure the exact amount of time it takes for the voltage in the RC circuit to rise to the level of the wiper of the pots in the joystick. By measuring this time very precisely, the joystick position can be read to 10 times the precision measured with the ordinary (6-bit DAC) joystick
+port.
 
---
+---
 
 The program can be built using CMOC <http://perso.b2b2c.ca/~sarrazip/dev/cmoc.html>, LWTools <http://www.lwtools.ca>, and Toolshed <https://sourceforge.net/projects/toolshed/>.
 
---
+---
 
 tim lindner
 <tlindner@macmess.org>
