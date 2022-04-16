@@ -60,6 +60,7 @@ unsigned countBitsInBuffer( byte *start, byte *end )
 int main()
 {
 	BOOL showText = TRUE;
+	BOOL version = TRUE;
 
 	unsigned short x;
 	unsigned short hi_min_x, hi_max_x;
@@ -85,7 +86,11 @@ int main()
 	setMasterSoundSwitch(FALSE);
 	cls(1);
 
-	printf( "HI RES JOYSTICK TESTING PROGRAM\n" );
+	if(version)
+		printf( "HI RES JOYSTICK TESTING PROGRAM\n" );
+	else
+		printf( "CM3 JOYSTICK TESTING PROGRAM   \n" );
+
 	printf( "USE RIGHT JOYSTICK PORT\n");
 	printf( "\n");
 	printf( "    MIN     CURRENT      MAX\n" );
@@ -106,7 +111,22 @@ int main()
 	while(1)
 	{
 		setHighSpeed(FALSE);
-		x = HiResJoyIn(HRJ_Right_Horizontal_Port);
+
+		if(version)
+		{
+			x = HiResJoyIn(HRJ_Right_Horizontal_Port);
+			y = HiResJoyIn(HRJ_Right_Vertical_Port);
+		}
+		else
+		{
+			PIA0_CM3_Mode();
+			x = HiResJoyIn_CM3(HRJ_Right_Horizontal_Port);
+			y = HiResJoyIn_CM3(HRJ_Right_Vertical_Port);
+			PIA0_Normal_Mode();
+		}
+
+		setHighSpeed(TRUE);
+
 		if(x>20 && x<1000)
 		{
 			setBit(x, ADDR0);
@@ -114,7 +134,6 @@ int main()
 			lo_max_x = max(x, lo_max_x);
 		}
 
-		y = HiResJoyIn(HRJ_Right_Vertical_Port);
 		if(y>20 && y<1000)
 		{
 			setBit(y, ADDR1);
@@ -143,8 +162,19 @@ int main()
 			printf( "%05u", lo_max_y );
 		}
 
-		setHighSpeed(TRUE);
-		x = HiResJoyIn(HRJ_Right_Horizontal_Port);
+		if(version)
+		{
+			x = HiResJoyIn(HRJ_Right_Horizontal_Port);
+			y = HiResJoyIn(HRJ_Right_Vertical_Port);
+		}
+		else
+		{
+			PIA0_CM3_Mode();
+			x = HiResJoyIn_CM3(HRJ_Right_Horizontal_Port);
+			y = HiResJoyIn_CM3(HRJ_Right_Vertical_Port);
+			PIA0_Normal_Mode();
+		}
+
 		if(x>20 && x<1000)
 		{
 			setBit(x, ADDR2);
@@ -152,7 +182,6 @@ int main()
 			hi_max_x = max(x, hi_max_x);
 		}
 
-		y = HiResJoyIn(HRJ_Right_Vertical_Port);
 		if(y>20 && y<1000)
 		{
 			setBit(y, ADDR3);
@@ -234,6 +263,46 @@ int main()
 			printf( "%05d of %05d", countBitsInBuffer( ADDR2, ADDR3 ), (hi_max_x-hi_min_x));
 			locate( 12, 13);
 			printf( "%05d of %05d", countBitsInBuffer( ADDR3, ADDR4 ), (hi_max_y-hi_min_y));
+		}
+
+		if (isKeyPressed(KEY_PROBE_R, KEY_BIT_R))
+		{
+			version = TRUE;
+
+			locate(0, 0);
+			printf( "HI RES JOYSTICK TESTING PROGRAM" );
+
+			pcls(0);
+
+			lo_min_x = 0xffff;
+			lo_max_x = 0;
+			lo_min_y = 0xffff;
+			lo_max_y = 0;
+
+			hi_min_x = 0xffff;
+			hi_max_x = 0;
+			hi_min_y = 0xffff;
+			hi_max_y = 0;
+		}
+
+		if (isKeyPressed(KEY_PROBE_M, KEY_BIT_M))
+		{
+			version = FALSE;
+
+			locate(0, 0);
+			printf( "CM3 JOYSTICK TESTING PROGRAM   " );
+
+			pcls(0);
+
+			lo_min_x = 0xffff;
+			lo_max_x = 0;
+			lo_min_y = 0xffff;
+			lo_max_y = 0;
+
+			hi_min_x = 0xffff;
+			hi_max_x = 0;
+			hi_min_y = 0xffff;
+			hi_max_y = 0;
 		}
 	}
 

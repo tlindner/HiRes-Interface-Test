@@ -1,12 +1,16 @@
 #  HiRes Interface Test
 
-This program will run on a CoCo 3 and let the user test a Tandy Hi-Res Joystick Interface.
+This program will run on a CoCo 3 and let the user test a Tandy Hi-Res Joystick Interface or CoCo Max III hi res interface.
 
 Plug the unit into the casette and right joystick ports and then plug a joystick or mouse into the interface.
 
-Start the program, and slowly move the joystick or mouse to hit every point that the input device is capable of achieving.
+Start the program by typing:
 
-You wil see the program keep track of the minimum and maximum sampled values for both slow and fast processor speeds. It will also show the current value.
+ LOADM "JOY":EXEC
+
+and slowly move the joystick or mouse to hit every point that the input device is capable of achieving.
+
+You will see the program keep track of the minimum and maximum sampled values for both slow and fast processor speeds. It will also show the current value.
 
 Press the 'S' key on the keyboard, and the program will calculate the mean between the min and max values. It will also display the number values returned between the minimum and maximum. This is called the "percent".
 
@@ -16,7 +20,13 @@ Press "T" to return to the information page.
 
 Press "C" to clear all statistics.
 
+Press "M" to switch to CoCo Max III mode.
+
+Press "T" to switch back to Tandy mode.
+
 The program throws away values below 20, and above 1000.
+
+The disk also contains `JOY.BAS` which let you examine the joystick values with out a hi-res interface.
 
 ---
 

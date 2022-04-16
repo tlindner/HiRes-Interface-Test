@@ -19,4 +19,7 @@
 */
 
 unsigned short HiResJoyIn( unsigned short port );
+unsigned short HiResJoyIn_CM3( unsigned short port );
 void setMasterSoundSwitch(BOOL silent);
+void PIA0_CM3_Mode();
+void PIA0_Normal_Mode();
