@@ -6,7 +6,7 @@ Plug the unit into the casette and right joystick ports and then plug a joystick
 
 Start the program by typing:
 
- LOADM "JOY":EXEC
+ LOADM "HRJOY":EXEC
 
 and slowly move the joystick or mouse to hit every point that the input device is capable of achieving.
 
@@ -26,7 +26,7 @@ Press "T" to switch back to Tandy mode.
 
 The program throws away values below 20, and above 1000.
 
-The disk also contains `JOY.BAS` which let you examine the joystick values with out a hi-res interface.
+The disk also contains `NORMJOY.BAS` which let you examine the joystick values with out a hi-res interface.
 
 ---
 
