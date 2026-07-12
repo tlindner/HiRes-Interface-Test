@@ -111,20 +111,19 @@ int main()
 	while(1)
 	{
 		setHighSpeed(FALSE);
-		x = 0;
-		y = 0;
-// 		if(version)
-// 		{
-// 			x = HiResJoyIn(HRJ_Right_Horizontal_Port);
-// 			y = HiResJoyIn(HRJ_Right_Vertical_Port);
-// 		}
-// 		else
-// 		{
-// 			PIA0_CM3_Mode();
-// 			x = HiResJoyIn_CM3(HRJ_Right_Horizontal_Port);
-// 			y = HiResJoyIn_CM3(HRJ_Right_Vertical_Port);
-// 			PIA0_Normal_Mode();
-// 		}
+
+		if(version)
+		{
+			x = HiResJoyIn(HRJ_Right_Horizontal_Port);
+			y = HiResJoyIn(HRJ_Right_Vertical_Port);
+		}
+		else
+		{
+			PIA0_CM3_Mode();
+			x = HiResJoyIn_CM3(HRJ_Right_Horizontal_Port);
+			y = HiResJoyIn_CM3(HRJ_Right_Vertical_Port);
+			PIA0_Normal_Mode();
+		}
 
 		setHighSpeed(TRUE);
 
@@ -163,19 +162,16 @@ int main()
 			printf( "%05u", lo_max_y );
 		}
 
-		x = 0;
-		y = 0;
-
 		if(version)
 		{
 			x = HiResJoyIn(HRJ_Right_Horizontal_Port);
-// 			y = HiResJoyIn(HRJ_Right_Vertical_Port);
+			y = HiResJoyIn(HRJ_Right_Vertical_Port);
 		}
 		else
 		{
 			PIA0_CM3_Mode();
 			x = HiResJoyIn_CM3(HRJ_Right_Horizontal_Port);
-// 			y = HiResJoyIn_CM3(HRJ_Right_Vertical_Port);
+			y = HiResJoyIn_CM3(HRJ_Right_Vertical_Port);
 			PIA0_Normal_Mode();
 		}
 
